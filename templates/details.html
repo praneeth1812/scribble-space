@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
+
+    
+    <style>
+        body{
+        background-color: rgb(255, 255, 225);
+        }
+        .box{
+            margin-top:4%;
+            margin-left:6%;
+            margin-right:6%;
+        }
+        textarea {
+            font-size:x-large;
+            border: none; 
+            outline: none; 
+            resize: none;
+}
+#copy{
+    cursor: pointer;
+}
+#copy:hover{
+    color:rgb(25, 120, 230);
+}
+
+    </style> 
+</head>
+<body>
+    <!-- main -->
+    <!-- <form action="{{url_for('update')}}" method="post">
+        <h3>{{id}}</h3>
+        <textarea type="text" name="id" hidden>{{id}}</textarea>
+        <textarea class="code-editor" placeholder="Enter your code here..." name="data" >{{res}}</textarea>
+        <button class="btn btn-primary" type="submit">Update & Save</button>
+    </form> -->
+
+    <form action="{{url_for('update')}}" method="post">
+    <div class="card_info box ">
+        
+        <div class="card mid">
+            <div class="card-header" style=" display: flex;justify-content: space-between;">
+                <span>
+                {{h_id}}
+            </span>
+            <span id="copy" onclick="copyText()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                      </svg> Copy
+                      </span>
+            </div>
+            
+            <textarea class="code-editor" id="myTextarea" placeholder="Enter your code here..." name="h_res" style="height: 35rem;">{{h_res}}</textarea>             
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <textarea type="text" name="h_id" hidden >{{h_id}}</textarea>
+                <button class="btn btn-primary" type="submit">Update & Exit</button>
+            </blockquote>
+          </div>
+        </div>
+        </div>
+    </form>
+
+
+
+
+    <!-- main -->
+    <script>
+        function copyText() {
+            // Get the textarea element
+            var textarea = document.getElementById("myTextarea");
+
+            // Select the text
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the textarea to the clipboard
+            document.execCommand("copy");
+            // Alert the copied text (optional)
+            alert("Copied the text");
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
